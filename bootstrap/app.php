@@ -5,6 +5,9 @@
  * Date: 7/26/2018
  * Time: 7:05 PM
  */
+
+require __DIR__ . '/../vendor/autoload.php';
+
 $app = new \Slim\App([
 //to show errors: override in Container class
     'settings' =>[
@@ -25,6 +28,7 @@ $container['db'] = function(){
 //cache is false. Again, simple site.
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
+        //no cache... kiss
         'cache' => false
     ]);
 

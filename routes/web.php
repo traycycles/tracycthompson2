@@ -9,7 +9,8 @@
 use App\Controllers\BlogController;
 
 $app->get('/', function ($request, $response) {
-    echo 'home';
+    //echo 'home';
+    return $this->view->render($response, 'home.twig');
 });
 
 $app->group('/blog', function(){
