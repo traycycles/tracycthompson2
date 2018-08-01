@@ -29,12 +29,15 @@ $container['db'] = function(){
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
         //no cache... kiss
-        'cache' => false
+        'cache' => false, 'debug'=>true
     ]);
+    $view->addExtension(new Twig_Extension_Debug());
 
     // Instantiate and add Slim specific extension
     $basePath = rtrim(str_ireplace('index.php', '', $container->get('request')->getUri()->getBasePath()), '/');
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+    //trying to add this so it can be used in every route...
+    $view['baseUrl'] = $container['request']->getUri()->getBaseUrl();
 
     return $view;
 

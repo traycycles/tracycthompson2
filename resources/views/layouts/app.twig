@@ -3,8 +3,36 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
+        {#this should work... given the TwigExtention.php constructor. But don't know why npt working.#}
+        <link href='https://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400,400italic,700,700italic,800' rel='stylesheet' type='text/css'>
+        <link href="{{ baseUrl }}/css/normalize.css" rel="stylesheet" type="text/css" />
+        <link href="{{ baseUrl }}/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="{{ baseUrl }}/css/responsive.css" rel="stylesheet" type="text/css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        {% block content %}{% endblock %}
+    <header>
+        {% block header %}
+            <h1 >Tracy C. Thompson</h1>
+            <h2 >Web Developer</h2>
+            {% block nav %}
+                <nav>
+                    <ul>
+                        <li>Home</li>
+                        <li>Contact</li>
+                        <li>Blog</li>
+                    </ul>
+                </nav>
+            {% endblock %}
+
+        {% endblock %}
+    </header>
+
+        {% block content %}
+
+
+
+        {% endblock %}
     </body>
 </html>

@@ -14,11 +14,11 @@ use Interop\Container\ContainerInterface;
 //creating the abstract class because its only purpose is to be used by other controllers. It won't be instantiated on its own.
 abstract class BaseController
 {
-    protected $c;
+    protected $container;
 
-    public function __construct(ContainerInterface $c)
+    public function __construct(ContainerInterface $container)
     {
-        $this->c = $c;
+        $this->container = $container;
     }
 
 }
