@@ -9,14 +9,13 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new \Slim\App([
-//to show errors: override in Container class
+//Temp...to show errors: override in Container class
     'settings' =>[
         'displayErrorDetails' => true,
     ]
 ]);
 
 //binding it all to the container.
-//pretty simple site. Not necessary to separate and put in bootstrap folder... available if need be. But I ain't that complicated.
 $container = $app->getContainer();
 
 //db for blogs, eventually comments?? see above
@@ -28,7 +27,7 @@ $container['db'] = function(){
 //cache is false. Again, simple site.
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig(__DIR__ . '/../resources/views', [
-        //no cache... kiss
+        //no cache... kiss, debug... Temp.
         'cache' => false, 'debug'=>true
     ]);
     $view->addExtension(new Twig_Extension_Debug());
@@ -43,5 +42,5 @@ $container['view'] = function ($container) {
 
 };
 
-//all my routes located here.
+//all routes located here.
 require __DIR__ . '/../routes/web.php';
